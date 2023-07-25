@@ -111,29 +111,18 @@ zinit light BurntSushi/ripgrep
 # NEOVIM
 zinit ice from="gh-r" as="program" bpick="*linux64.tar.gz" ver="nightly" pick="nvim-linux64/bin/nvim"
 zinit light neovim/neovim
-# WEZTERM
-# zinit ice from="gh-r" as="program" bpick="*ebian11.deb" ver="nightly" pick="usr/bin/wezterm"
-zinit ice from="gh-r" as="program" bpick="*appimage*" mv="Wez* -> wezterm" pick="wezterm"
-zinit light wez/wezterm
 # FORGIT
 zinit ice wait lucid
 zinit load wfxr/forgit
 # LAZYGIT
 zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazygit" atload="alias lg='lazygit'"
 zinit light jesseduffield/lazygit
-# LAZYDOCKER
-zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazydocker"
-zinit light jesseduffield/lazydocker
 # FD
 zinit ice as="command" from="gh-r" bpick="*amd64.deb" pick="usr/bin/fd" 
 zinit light sharkdp/fd
 # GH-CLI
 zinit ice lucid as="command" from="gh-r" bpick="*linux_amd64.deb" atclone="./gh completion -s zsh > _gh" atpull="%atclone" mv="**/bin/gh* -> gh" pick="usr/bin/gh"
 zinit light cli/cli
-# GOOGLE-CLOUD-SDK COMPLETION
-zinit ice as="completion"; zinit snippet /opt/google-cloud-sdk/completion.zsh.inc
-# TMUXINATOR
-zinit ice as="completion"; zinit snippet ~/.tmuxinator.zsh
 # ZSH MANYDOTS MAGIC
 zinit ice depth"1" wait lucid pick"manydots-magic" compile"manydots-magic"
 zinit light knu/zsh-manydots-magic
@@ -151,17 +140,9 @@ zinit load denilsonsa/prettyping
 # asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 zinit ice lucid wait="0" pick="asdf.sh"
 zinit light asdf-vm/asdf
-# VSCODE-NODE-DEBUG for NVIM-DAP
-# npm install
-# npm run buil
-zinit ice lucid wait="0" nocompile nocompletions
-zinit light microsoft/vscode-node-debug2.git
 # CROC
 zinit ice lucid wait="0" as="program" from="gh-r" bpick="*64bit*"
 zinit light schollz/croc
-# GLOW
-zinit ice lucid wait"0" as"program" from"gh-r" bpick='*_amd64.deb' pick"usr/bin/glow"
-zinit light charmbracelet/glow
 # ERDTREE
 zinit ice lucid wait"0" as"program" from"gh-r"
 zinit light solidiquis/erdtree
@@ -213,8 +194,8 @@ export EDITOR='nvim'
 export VISUAL=$EDITOR
 export PAGER='less'
 export SHELL='/bin/zsh'
-export LANG='it_IT.UTF-8'
-export LC_ALL='it_IT.UTF-8'
+# export LANG='it_IT.UTF-8'
+# export LC_ALL='it_IT.UTF-8'
 # export BAT_THEME="gruvbox-dark"
 if [[ ! $(tmux ls) ]] 2> /dev/null; then 
   tmux new -s λ
@@ -278,16 +259,16 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #########################################################################
 # Thanks to sei40kr/zsh-fzf-gcloud
 
-function fzf-gcloud-config-set-project() {
-  local project="$(gcloud projects list |
-    fzf --header-lines=1 --reverse |
-    awk '{ print $1 }')"
-  if [[ -n "$project" ]]; then
-    gcloud config set project "$project"
-  fi
-}
-zle -N fzf-gcloud-config-set-project
-bindkey '^G' fzf-gcloud-config-set-project
+#function fzf-gcloud-config-set-project() {
+#  local project="$(gcloud projects list |
+#    fzf --header-lines=1 --reverse |
+#    awk '{ print $1 }')"
+#  if [[ -n "$project" ]]; then
+#    gcloud config set project "$project"
+#  fi
+#}
+#zle -N fzf-gcloud-config-set-project
+#bindkey '^G' fzf-gcloud-config-set-project
 
 #########################################################################
 # PATH
@@ -297,27 +278,27 @@ export PATH=$PATH:/usr/local/go/bin:~/.local/bin:~/bin
 #########################################################################
 # GOOGLE-SDK
 #########################################################################
-if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
 
 #########################################################################
 # GO SETTINGS
 #########################################################################
-export GOPATH=$HOME/Dev/go
+# export GOPATH=$HOME/Dev/go
 
 #########################################################################
 # FLUTTER SETTINGS
 #########################################################################
-export PATH="$PATH:$HOME/Dev/flutter/bin"
+# export PATH="$PATH:$HOME/Dev/flutter/bin"
 
 #########################################################################
 # ANDROID STUDIO SETTINGS
 #########################################################################
-export PATH="$PATH:/opt/android-studio/bin"
+# export PATH="$PATH:/opt/android-studio/bin"
 #
 #########################################################################
 # MSSQL-TOOLS
 #########################################################################
-export PATH="$PATH:/opt/mssql-tools18/bin"
+# export PATH="$PATH:/opt/mssql-tools18/bin"
 
 #########################################################################
 # P10K SETTINGS
